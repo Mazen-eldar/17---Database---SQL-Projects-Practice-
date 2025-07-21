@@ -1,0 +1,10 @@
+SELECT
+	M.Make, COUNT(M.Make) AS NumberOfVehicles ,
+	(SELECT COUNT(*) FROM VehicleDetails) AS TotalVehicles
+FROM
+	VehicleDetails V
+	INNER JOIN Makes M
+	ON V.MakeID = M.MakeID
+	WHERE Year BETWEEN 1950 AND 2000
+GROUP BY M.Make
+ORDER BY COUNT(M.Make) DESC;
