@@ -1,0 +1,8 @@
+SELECT DISTINCT
+	M.Make as Make,
+	F.FuelTypeName
+FROM
+	FuelTypes F
+	INNER JOIN VehicleDetails V ON F.FuelTypeID=V.FuelTypeID
+	INNER JOIN Makes M ON M.MakeID=V.MakeID
+WHERE F.FuelTypeName='GAS'
