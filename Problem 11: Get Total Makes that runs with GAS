@@ -1,0 +1,17 @@
+SELECT COUNT(*) AS TotalMakesRunsOnGas FROM 
+(
+	SELECT DISTINCT M.Make, F.FuelTypeName
+	FROM VehicleDetails AS V
+	INNER JOIN FuelTypes AS F
+	ON V.FuelTypeID = F.FuelTypeID
+	INNER JOIN Makes AS M
+	ON V.MakeID = M.MakeID
+	WHERE F.FuelTypeName = 'GAS'
+) AS R1;
+
+--Another way
+SELECT COUNT(DISTINCT M.Make) AS TotalMakesRunsOnGas
+FROM VehicleDetails V
+INNER JOIN FuelTypes F ON V.FuelTypeID = F.FuelTypeID
+INNER JOIN Makes M ON V.MakeID = M.MakeID
+WHERE F.FuelTypeName = 'GAS';
