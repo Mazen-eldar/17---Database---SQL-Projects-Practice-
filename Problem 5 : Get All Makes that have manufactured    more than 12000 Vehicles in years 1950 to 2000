@@ -1,0 +1,21 @@
+SELECT M.Make, COUNT(*) AS NumberOfVehicles
+FROM VehicleDetails V
+JOIN Makes M
+ON V.MakeID = M.MakeID
+WHERE Year BETWEEN 1950 AND 2000
+GROUP BY M.Make
+HAVING COUNT(M.MakeID) > 12000
+ORDER BY NumberOfVehicles DESC;
+
+--Another way but is slowest without use having subquery
+select * from
+(
+SELECT M.Make, COUNT(*) AS NumberOfVehicles
+FROM VehicleDetails V
+JOIN Makes M
+ON V.MakeID = M.MakeID
+WHERE Year BETWEEN 1950 AND 2000
+GROUP BY M.Make
+)t
+where( t.NumberOfVehicles >  12000)
+order by t.NumberOfVehicles desc
