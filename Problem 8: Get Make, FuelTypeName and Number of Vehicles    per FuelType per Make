@@ -1,0 +1,14 @@
+SELECT 
+    M.Make AS Make,
+    F.FuelTypeName AS FuelTypeName,
+    COUNT(*) AS NumberOfVehicles
+FROM 
+    VehicleDetails V
+    INNER JOIN Makes M ON V.MakeID = M.MakeID
+    INNER JOIN FuelTypes F ON V.FuelTypeID = F.FuelTypeID
+WHERE 
+    V.Year BETWEEN 1950 AND 2000
+GROUP BY 
+    M.Make, F.FuelTypeName
+ORDER BY 
+    M.Make, F.FuelTypeName;
