@@ -1,0 +1,5 @@
+SELECT *
+	FROM 
+	VehicleDetails V
+	INNER JOIN FuelTypes F ON F.FuelTypeID=V.FuelTypeID
+WHERE F.FuelTypeName='GAS'
