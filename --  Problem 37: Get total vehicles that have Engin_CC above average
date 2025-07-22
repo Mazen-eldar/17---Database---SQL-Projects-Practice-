@@ -1,0 +1,6 @@
+--  Problem 37: Get total vehicles that have Engin_CC above average
+Select
+	COUNT(*) as NumberOfVehiclesAboveAverageEngineCC
+from 
+	VehicleDetails
+where Engine_CC > ( select  AVG(Engine_CC) as AVGEngineCC  from VehicleDetails )
