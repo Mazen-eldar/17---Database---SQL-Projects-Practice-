@@ -1,0 +1,4 @@
+--  Problem 21: Get Total Vehicles that number of doors is not specified
+SELECT COUNT(*) as TotalWithNoSpecifiedDoors
+FROM VehicleDetails V
+WHERE V.NumDoors IS NULL
