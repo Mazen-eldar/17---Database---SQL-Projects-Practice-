@@ -1,0 +1,7 @@
+--  Problem 17: Get total Makes that Mantufactures DriveTypeName=FWD
+
+SELECT COUNT(DISTINCT Makes.MakeID) AS TotalMakeWithFWD
+FROM DriveTypes
+JOIN VehicleDetails ON DriveTypes.DriveTypeID = VehicleDetails.DriveTypeID
+JOIN Makes ON VehicleDetails.MakeID = Makes.MakeID
+WHERE DriveTypes.DriveTypeName = 'FWD';
