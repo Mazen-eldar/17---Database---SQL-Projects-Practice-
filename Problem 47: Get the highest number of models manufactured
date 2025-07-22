@@ -1,0 +1,25 @@
+--  Problem 47: Get the highest number of models manufactured
+SELECT     top(1)   Makes.Make, COUNT(*) AS NumberOfModels
+FROM            Makes INNER JOIN
+                         MakeModels ON Makes.MakeID = MakeModels.MakeID
+GROUP BY Makes.Make
+Order By NumberOfModels Desc
+
+--ANOTHER WAY
+select Max(NumberOfModels) as MaxNumberOfModels
+from
+(
+
+		SELECT        Makes.Make, COUNT(*) AS NumberOfModels
+		FROM            Makes INNER JOIN
+								 MakeModels ON Makes.MakeID = MakeModels.MakeID
+		GROUP BY Makes.Make
+		
+) R1
+/*
+-- The first solution using TOP(1) with ORDER BY is preferred here.
+-- It returns both the make and the number of models, giving more meaningful results.
+-- The second solution only returns the maximum number, without the make name.
+-- So, for real-world usage where we need to know *which* make had the most models,
+-- the first query is clearly the better and more informative choice.
+*/
