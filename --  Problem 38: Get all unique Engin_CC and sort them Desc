@@ -1,0 +1,6 @@
+--  Problem 38: Get all unique Engin_CC and sort them Desc
+SELECT
+	DISTINCT V.Engine_CC
+FROM 
+	VehicleDetails V
+ORDER BY V.Engine_CC DESC
