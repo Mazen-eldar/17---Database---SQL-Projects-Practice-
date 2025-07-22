@@ -1,0 +1,31 @@
+--  Problem 44: Get Total Number Of Doors Manufactured by 'Ford'
+SELECT 
+    Makes.Make, 
+    SUM(VehicleDetails.NumDoors) AS TotalNumberOfDoors
+FROM 
+    VehicleDetails 
+INNER JOIN 
+    Makes ON VehicleDetails.MakeID = Makes.MakeID AND Makes.Make='Ford'
+GROUP BY 
+    Makes.Make
+ORDER BY 
+    TotalNumberOfDoors DESC;
+
+--ANOTHER WAY
+SELECT        Makes.Make, Sum(VehicleDetails.NumDoors) AS TotalNumberOfDoors
+FROM            VehicleDetails INNER JOIN
+                         Makes ON VehicleDetails.MakeID = Makes.MakeID
+
+Group By Make
+Having Make='Ford'
+
+/*
+-- The first solution is more efficient and preferred for this case.
+-- By placing the condition "Makes.Make = 'Ford'" inside the JOIN clause,
+-- we filter the data *before* the aggregation happens, which improves performance.
+-- It avoids unnecessary grouping of other makes, reduces the data being processed,
+-- and results in cleaner and faster execution.
+-- In contrast, the second solution applies the filter after grouping using HAVING,
+-- which is less optimal when you're only interested in one specific make.
+
+*/
