@@ -1,0 +1,11 @@
+--  Problem 54: Get All Employees managed by 'Mohammed'
+SELECT
+	Employees.Name, 
+    Employees.ManagerID,
+    Employees.Salary,
+	Manager.Name AS ManagerName
+FROM Employees
+INNER JOIN
+Employees Manager ON Manager.EmployeeID=Employees.ManagerID
+WHERE Manager.Name='Mohammed'
+-------------------------------------------------------------------------------
